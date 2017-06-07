@@ -378,9 +378,10 @@ input {
 .header__subtitle {
   margin-bottom: 20px;
   text-align: center;
-  color: #eaeaea;
-  font-size: 16px;
-  font-weight: normal; }
+  color: #fff;
+  font-size: 16px; }
+  .header__subtitle > b {
+    color: #c0c5ce; }
 
 .search {
   margin: 50px 0 0 0; }
@@ -413,14 +414,17 @@ input {
     .search__suggestions__list__item:hover {
       background-color: #eaeaea; }
     .search__suggestions__list__item.current {
-      background-color: #eaeaea; }
+      background-color: #c0c5ce; }
+      .search__suggestions__list__item.current > a {
+        color: #fff; }
       .search__suggestions__list__item.current p {
         display: block; }
     .search__suggestions__list__item__link {
       display: block;
       padding: 4px 10px;
       text-decoration: none;
-      color: #4f5b66; }
+      color: #4f5b66;
+      cursor: pointer; }
       .search__suggestions__list__item__link > b {
         color: #008AA0; }
     .search__suggestions__list__item__excerpt {

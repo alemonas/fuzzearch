@@ -52,7 +52,10 @@
 				}
 
 				&.current {
-					background-color: $colorSuperLigth;
+					background-color: $colorLigth;
+					& > a {
+						color: $colorWhite;
+					}
 					& p {
 						display: block;
 					}
@@ -65,7 +68,7 @@
 					padding: 4px 10px;
 					text-decoration: none;
 					color: $colorSecDark;
-
+					cursor: pointer;
 					& > b {
 						color: $colorResaltText;
 					}

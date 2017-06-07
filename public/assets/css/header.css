@@ -9,6 +9,7 @@
 .header__subtitle {
   margin-bottom: 20px;
   text-align: center;
-  color: #eaeaea;
-  font-size: 16px;
-  font-weight: normal; }
+  color: #fff;
+  font-size: 16px; }
+  .header__subtitle > b {
+    color: #c0c5ce; }

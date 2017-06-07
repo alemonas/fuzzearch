@@ -90,15 +90,18 @@ var SearchFormView = {
 		// Add event listeners
 		var searchInputHandler = function(e){
 			those.searchterms = this.value;
-
 			console.log("code: ", e.which);
-
 			if ( EventUtil.isAValidKeyCharForSearch(e) ) Fuzzearch.getDataFromAPI(this.value);
-
-			if ( EventUtil.isAValidKeyCharForNavigate(e) ) Fuzzearch.startArrowNavigation(e);
 		};
 
 		EventUtil.addHandler(this.$searchInputEle, 'keyup', searchInputHandler);
+
+		var arrownavigationHandler = function(e) {
+			console.log(e);
+			if ( EventUtil.isAValidKeyCharForNavigate(e) ) Fuzzearch.startArrowNavigation(e);
+		}
+
+		EventUtil.addHandler(document, 'keyup', arrownavigationHandler);
 	}
 };
 
@@ -156,7 +159,9 @@ var SearchSuggestionsView = {
 
 	    EventUtil.addHandler(liElem, 'click', function(){
 
-	    	var current = those.$searchSuggestionsListEle.querySelector('.search__suggestions__list__item.current');
+	    	var current = Fuzzearch.getCurrentItemOnSuggestionList();
+
+	    	// var current = those.$searchSuggestionsListEle.querySelector('.search__suggestions__list__item.current');
 
 	    	if (current) current.classList.remove('current');
 
@@ -202,12 +207,39 @@ var SearchSuggestionsView = {
 		if ( this.arrowNavDirection == "up" ) this.goToUp();
 	},
 
-	goTodown: function(){
-		console.info('go to down');
+	goToDown: function(){
+		
+		var currentItem = Fuzzearch.getCurrentItemOnSuggestionList();
+		
+		if ( ! currentItem ) {
+			Fuzzearch.setFirstItemOnSuggestionListToCurrent();
+			return false;
+		}
+
+		var nextSiblingItem = currentItem.nextSibling;
+
+		if ( ! nextSiblingItem ) { return false; }
+
+		Fuzzearch.removeCurrentItemOnSuggestionList();
+
+		Fuzzearch.setCurrentItemOnSuggestionList(nextSiblingItem);
+
 	},
 
 	goToUp: function() {
-		console.info('go to up');
+
+		var currentItem = Fuzzearch.getCurrentItemOnSuggestionList();
+		
+		if ( ! currentItem ) { return false; }
+
+
+		var previousSiblingItem = currentItem.previousSibling;
+
+		if ( ! previousSiblingItem ) { return false; }
+
+		Fuzzearch.removeCurrentItemOnSuggestionList();
+
+		Fuzzearch.setCurrentItemOnSuggestionList(previousSiblingItem);
 	}
 };
 
@@ -243,6 +275,37 @@ var Fuzzearch = {
 	setSearchSuggestions: function(searchSuggestions){
 		Model.searchSuggestions = JSON.parse(searchSuggestions);
 	},
+
+	removeCurrentItemOnSuggestionList: function() {
+		var currentItem = this.getCurrentItemOnSuggestionList();
+		console.log(currentItem);
+		currentItem.classList.remove('current');
+	},
+
+	getFirstItemOnSuggestionList: function() {
+		if ( ! SearchSuggestionsView.$searchSuggestionsListEle.childNodes.length ) return false;
+
+		var firstItem = SearchSuggestionsView.$searchSuggestionsListEle.childNodes[0];
+		console.log(firstItem);
+
+		return firstItem;
+	},	
+
+	getCurrentItemOnSuggestionList: function() {
+		var currentItem = SearchSuggestionsView.$searchSuggestionsListEle.querySelector('.search__suggestions__list__item.current');
+		return currentItem ? currentItem : false;
+	},
+
+	setFirstItemOnSuggestionListToCurrent: function() {
+		var firstItem = this.getFirstItemOnSuggestionList();
+
+		this.setCurrentItemOnSuggestionList(firstItem);
+
+	},
+
+	setCurrentItemOnSuggestionList: function(item) {
+		item.classList.add('current');
+	}
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
