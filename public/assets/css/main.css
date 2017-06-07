@@ -1,0 +1,45 @@
+.search {
+  margin: 50px 0 0 0; }
+  .search__form__input {
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 2px solid #4f5b66;
+    padding: 15px 10px;
+    display: block;
+    color: #4f5b66;
+    background: url("../../images/icons/006-magnifying-glass.png") no-repeat 380px center scroll #FFF; }
+
+/* Suggestions */
+.search__suggestions__list {
+  width: 400px;
+  margin: 0 auto;
+  padding: 0;
+  border: 2px solid #4f5b66;
+  display: block;
+  list-style: none;
+  border-top: 0px; }
+  .search__suggestions__list__item {
+    background-color: #fff;
+    border-bottom: 1px solid #c0c5ce; }
+    .search__suggestions__list__item:first-child {
+      padding-top: 10px; }
+    .search__suggestions__list__item:last-child {
+      padding-bottom: 10px; }
+    .search__suggestions__list__item:hover {
+      background-color: #eaeaea; }
+    .search__suggestions__list__item.current {
+      background-color: #eaeaea; }
+      .search__suggestions__list__item.current p {
+        display: block; }
+    .search__suggestions__list__item__link {
+      display: block;
+      padding: 4px 10px;
+      text-decoration: none;
+      color: #4f5b66; }
+      .search__suggestions__list__item__link > b {
+        color: #008AA0; }
+    .search__suggestions__list__item__excerpt {
+      margin: 0;
+      padding: 10px;
+      display: none; }

@@ -1,0 +1,13 @@
+@import "colors";
+
+body {
+	background-color: $colorMainDark;	  
+	font-family: "Lato";
+}
+
+/**
+ * For Main tags
+ */
+input {
+	outline: 0;
+}

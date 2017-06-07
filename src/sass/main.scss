@@ -1,0 +1,82 @@
+@import "colors"; 
+
+.search {
+	margin: 50px 0 0 0;
+	&__form {
+		&__input {
+			width: 400px;
+			margin: 0 auto;
+			border-radius: 5px;
+			border: 2px solid $colorSecDark;  
+			padding: 15px 10px; 
+			display: block;
+			color: $colorSecDark;
+			// background: url('../../images/icons/004-search-1.png') no-repeat 380px center scroll #FFF;
+			// background: url('../../images/icons/001-wikipedia.png') no-repeat 380px center scroll #FFF;
+			background: url('../../images/icons/006-magnifying-glass.png') no-repeat 380px center scroll #FFF;
+			// background: url('../../images/icons/003-wikipedia-logotype-of-earth-puzzle.png') no-repeat 380px center scroll #FFF;
+			// background: url('../../images/icons/002-wikipedia-logotype-of-earth-puzzle-1.png') no-repeat 380px center scroll #FFF;
+		}
+	}
+}
+
+
+/* Suggestions */
+
+.search {
+	&__suggestions {
+		&__list {
+			width: 400px;
+			margin: 0 auto; padding: 0;
+			// border-radius: 10px;
+			border: 2px solid $colorSecDark;  
+			// padding: 15px 10px; 
+			display: block;
+			list-style: none;
+			border-top: 0px;
+			// background-color: $colorWhite; 
+			&__item {
+
+				background-color: $colorWhite;
+				// padding: 4px 8px 0;
+
+				&:first-child {
+					padding-top: 10px;
+				}
+				&:last-child {
+					padding-bottom: 10px;	
+				}
+
+				&:hover {
+					background-color: $colorSuperLigth;
+				}
+
+				&.current {
+					background-color: $colorSuperLigth;
+					& p {
+						display: block;
+					}
+				}
+
+				border-bottom: 1px solid $colorLigth;
+
+				&__link {
+					display: block;
+					padding: 4px 10px;
+					text-decoration: none;
+					color: $colorSecDark;
+
+					& > b {
+						color: $colorResaltText;
+					}
+				}
+
+				&__excerpt {
+					margin: 0;
+					padding: 10px;
+					display: none;
+				}
+			}
+		}
+	} 
+}

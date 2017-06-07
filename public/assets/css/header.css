@@ -1,0 +1,14 @@
+.header__title {
+  color: #fff;
+  margin: 10px auto;
+  width: 200px;
+  background: url("../../images/icons/wikipedia-logotype-of-earth-puzzle.png") no-repeat right center scroll transparent; }
+  .header__title__resalt {
+    color: #008AA0; }
+
+.header__subtitle {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #eaeaea;
+  font-size: 16px;
+  font-weight: normal; }

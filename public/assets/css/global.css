@@ -1,0 +1,9 @@
+body {
+  background-color: #343d46;
+  font-family: "Lato"; }
+
+/**
+ * For Main tags
+ */
+input {
+  outline: 0; }

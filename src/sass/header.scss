@@ -1,0 +1,23 @@
+@import "colors"; 
+
+.header {
+
+	&__title {
+		color: $colorWhite; 
+		margin: 10px auto;
+		width: 200px;
+		// background: url('../../images/icons/001-wikipedia.png') no-repeat right center scroll transparent;
+		background: url('../../images/icons/wikipedia-logotype-of-earth-puzzle.png') no-repeat right center scroll transparent;
+		&__resalt {
+			color: $colorResaltText;
+		}
+	}	
+
+	&__subtitle {
+		margin-bottom: 20px;
+		text-align: center;
+		color: $colorSuperLigth;
+		font-size: 16px;
+		font-weight: normal;
+	}
+}
