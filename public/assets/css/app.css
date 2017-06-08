@@ -405,6 +405,7 @@ input {
   list-style: none;
   border-top: 0px; }
   .search__suggestions__list__item {
+    padding: 4px 10px;
     background-color: #fff;
     border-bottom: 1px solid #c0c5ce; }
     .search__suggestions__list__item:first-child {
@@ -414,14 +415,20 @@ input {
     .search__suggestions__list__item:hover {
       background-color: #eaeaea; }
     .search__suggestions__list__item.current {
-      background-color: #c0c5ce; }
+      background-color: #eaeaea; }
       .search__suggestions__list__item.current > a {
-        color: #fff; }
+        font-weight: bold;
+        color: #343d46;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #c0c5ce; }
+        .search__suggestions__list__item.current > a:before {
+          content: "> "; }
       .search__suggestions__list__item.current p {
-        display: block; }
+        display: block;
+        font-weight: normal;
+        font-size: 14px; }
     .search__suggestions__list__item__link {
       display: block;
-      padding: 4px 10px;
       text-decoration: none;
       color: #4f5b66;
       cursor: pointer; }

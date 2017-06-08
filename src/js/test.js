@@ -1,3 +1,5 @@
-function hello() {
-	alert("Hello");
-}
+var lib = require('./lib.js');
+	
+
+console.log(lib);
+

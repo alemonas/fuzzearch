@@ -1,81 +1,3 @@
-var Ajax = {
-
-	searchterms: "",
-	req: null, // Xhr request
-
-	url: "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&search=albert&namespace=0&limit=20&origin=*",
-
-	init: function(searchterms) {
-		this.searchterms = searchterms;
-		this.setUrl();
-	},
-
-	setUrl: function() {
-		this.url = "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&search=" + this.searchterms + "&namespace=0&limit=10&origin=*";
-	},
-
-	getUrl: function() {
-		return this.url;
-	},
-
-	get: function() {
-
-		var those = this;
-
-		if ( this.req != null ){
-			this.req.abort();
-		}
-
-		return new Promise(function(resolve, reject){
-			those.req = new XMLHttpRequest();
-			those.req.open("GET", those.url, true);
-
-			those.req.addEventListener("load", function(){
-				if (those.req.status < 400) {
-					resolve(those.req.responseText);
-				}else{
-					reject(new Error('Request reject: ' + those.req.statusText));
-				}
-			});
-			those.req.addEventListener('error', function(){
-				reject(new Error('Network error'));
-			});
-			those.req.send(null);
-		});
-	}
-};
-
-var EventUtil = {
-	addHandler: function(element, type, handler){
-		if (element.addEventListener){
-			element.addEventListener(type, handler, false);
-		} else if (element.attachEvent){
-			element.attachEvent("on" + type, handler);
-		} else {
-			element["on" + type] = handler;
-		}
-	},
-	removeHandler: function(element, type, handler){
-		if (element.removeEventListener){
-			element.removeEventListener(type, handler, false);
-		} else if (element.detachEvent){
-			element.detachEvent("on" + type, handler);
-		} else {
-			element["on" + type] = null;
-		}
-	},
-
-	isAValidKeyCharForSearch: function(e) {
-		if ( e.which <= 222 && e.which >= 48 || e.which == 8 ) return true;
-  	return false;
-	},
-
-	isAValidKeyCharForNavigate: function(e){
-		if ( e.which == 40 || e.which == 38 ) return true;
-		return false;
-	}
-};
-
 var Model = {
 	searchterms: "",
 	searchSuggestions: null,
@@ -284,8 +206,7 @@ var Fuzzearch = {
 	setCurrentItemOnSuggestionList: function(item) {
 		item.classList.add('current');
 	}
-}
+};
 
-document.addEventListener('DOMContentLoaded', function (event) {
-	Fuzzearch.init();
-});
+
+module.exports = Fuzzearch;
